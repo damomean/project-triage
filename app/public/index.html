@@ -32,8 +32,18 @@
       <div id="mainContent" class="col-md">
 
         <div id="patientRecordApp">
-          <form>
-
+          <form @submit.prevent="handleCreateRecord">
+            <div class="form-group">
+              <label for="recordFirstName">First Name:</label>
+              <input type="text" class="form-control" v-model="formPatient.firstName">
+              <label for="recordLastName">Last Name:</label>
+              <input type="text" class="form-control" v-model="formPatient.lastName">
+              <label for="recordDOB">DOB:</label>
+              <input type="date" class="form-control" v-model="formPatient.dob">
+              <label for="recordSAB">SAB:</label>
+              <input type="text" class="form-control" v-model="formPatient.sexAtBirth">
+              <button type="submit" class="btn btn-primary">Enter</button>
+            </div>
           </form>
           <table class="table table-sm table-hover">
             <thead>
@@ -63,17 +73,17 @@
         <div class="patientWaiting patient"
         :class="patient.priority + 'Priority'"
         v-for="patient in patients">
-          Arrival:<br>
-          <span class="patientName">{{ patient.lastName }}</span>,
-          <span class="patientName">{{ patient.firstName }}</span><br>
-          {{ patient.sexAtBirth }} {{ patient.dob }}
-        </div>
+        Arrival:<br>
+        <span class="patientName">{{ patient.lastName }}</span>,
+        <span class="patientName">{{ patient.firstName }}</span><br>
+        {{ patient.sexAtBirth }} {{ patient.dob }}
       </div>
     </div>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="js/waiting.app.js"></script>
-  <script src="js/record.app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/waiting.app.js"></script>
+<script src="js/record.app.js"></script>
 </body>
 </html>
